@@ -1,0 +1,46 @@
+# 📋 Document de gestion de projet – Tactifight
+
+## 1. Informations générales
+- **Nom du projet** : Tactifight
+- **Type de projet** : Mini-RPG en ligne de commande (Go)
+- **Équipe** : Matthias, Jérémy et Evann
+- **Date de démarrage** : [12/09/2025]
+- **Date de fin prévue** : [19/09/2025]
+
+---
+
+## 2. Objectifs du projet
+- Objectif principal :  Création d’un personne de jeux vidéo
+			Création des interface lui permettant d’interagir avec des objets et son environnement
+			Création d’un système de vente et de fabrication d’objets
+			Création d’un système de combat tour par tour
+- Objectifs secondaires :
+  - Créer un RPG simple et jouable dans le terminal.
+  - Intégrer humour + mécaniques cosmiques originales.
+  
+### 3. Fonctionnalités prévues (MVP)
+- Création de personnage
+- Combats au tour par tour
+- Inventaire (potions de vie/mana, poison cosmique, artefacts)
+- Boss et mécaniques spéciales
+- Marchand / Forgeron
+- Sons et affichage ASCII
+
+### Fonctionnalités optionnelles
+- Sauvegarde/chargement de partie
+
+## 4. Suivi des tâches (Backlog simplifié)
+- [] Implémenter la création de personnage
+- [] Gérer les potions de vie
+- [] Ajouter le mana et les sorts
+- [] Créer le marchand
+- [] Définir les patterns des boss
+- [] Ajouter les effets sonores
+
+## 5. Livrables attendus
+- Code source complet (Go)
+- README.md documenté
+- ASCII Art (logo, menus)
+- Document de gestion de projet rempli
+- [à compléter]
+
