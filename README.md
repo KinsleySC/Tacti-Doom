@@ -1,37 +1,37 @@
-Tactifight
+# Tacti-Doom
 
-**Tactifight** est un mini-RPG tactique en ligne de commande, écrit en **Go** 
-Plongez dans un univers délirant mêlant **chameaux toxiques lunaires**, **clones de Macron**, et des **boss présidentiels cosmiques**. 
+Projet 2D en C# (MonoGame) avec un menu Doom-like:
+- Menu vertical (Start, Options, Quit)
+- Navigation clavier: Haut/Bas/Entrée/Échap
+- Écrans: MainMenu, Game, Options
 
-Le but ? Survivez aux combats successifs, collectez de l’or, des objets rares et affrontez le redoutable **Emmanuel Macronius IV**.
+## Installation
+1. Installer MonoGame (DesktopGL ou WindowsDX).
+2. Cloner le dépôt dans `c:\Users\KSC\Documents\Ydays\Tacti-Doom`.
+3. Ouvrir le projet MonoGame et pointer `src` dans le namespace.
 
-Fonctionnalités
+## Contenu
+- `src/Program.cs`: point d’entrée.
+- `src/Game1.cs`: initialisation, boucle de jeu.
+- `src/ScreenManager.cs`: gestion des écrans (pile).
+- `src/Input.cs`: clavier (détection appui).
+- `src/MainMenuScreen.cs`: menu Doom-like.
+- `src/DummyGameScreen.cs`: écran jeu placeholder.
+- `src/DummyOptionsScreen.cs`: écran options placeholder.
+- `Content/DefaultFont.spritefont`: police pour le texte (à ajouter via Content Pipeline).
 
-- **Création de personnage** (nom, classe, stats de départ).
-- **Combats au tour par tour** contre des monstres et boss.
-- **Inventaire et potions**
-- Potion de vie : soigne le joueur.
-- Potion de mana : restaure du mana.
-- Potion de poison cosmique : inflige un poison au monstre (5 dégâts/tour pendant 3 tours).
-- **Sorts et mana**
-- Coup de poing, Boule de feu et Explosion de sable cosmique.
-- Gestion du coût en mana et des malus (ex. Réforme orbitale).
-- **Marchand & Forgeron**
-- Achetez potions, équipements, artefacts.
-- Équipez-vous pour booster vos stats.
-- **Boss et mécaniques spéciales**
-- Chameau toxique lunaire : Crachat stellaire (empoisonne).
-- Clone bancal de Macron : Discours infini (paralyse).
-- Garde présidentiel spatial : Sceptre-laser doré.
-- Emmanuel Macronius IV : Réforme orbitale & Taxe cosmique.
-- **Effets sonores** dans le terminal.
-- **Résurrection automatique** : vous revenez avec ½ PV et ½ Mana.
+## Lancement
+- Charger `DefaultFont` dans `Game1.LoadContent()`:
+  // ...existing code...
+  `_font = Content.Load<SpriteFont>("DefaultFont");`
+  // ...existing code...
+- Exécuter le projet, utiliser ↑ ↓ Entrée Échap.
 
-Installation
+## Style de code (B1 / Epitech-like)
+- Fonctions ≤ 20 lignes.
+- ≤ 4 paramètres par fonction.
+- Découper avec helpers si nécessaire.
+²- Noms simples, code clair.
 
-1. Clonez le dépôt :
-   git clone https://github.com/ShoriMatt/projet-red_Tactifight
-   cd src/
-   go mod tidy
-   go run .
-
+## Migration
+- Projet C# uniquement (MonoGame).
