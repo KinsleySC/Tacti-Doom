@@ -14,6 +14,8 @@ var volume: float = 0.5
 var fullscreen: bool = false
 
 func _ready() -> void:
+	# Récupérer l'état actuel du plein écran
+	fullscreen = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 	update_selection()
 	update_display()
 
@@ -77,7 +79,13 @@ func update_display() -> void:
 	$VBoxContainer/FullscreenOption.text = "Fullscreen: %s" % ("ON" if fullscreen else "OFF")
 
 func activate_item() -> void:
-	if selected_index == 2:
+	if selected_index == 0:
+		# Volume - pas d'action sur Entrée
+		pass
+	elif selected_index == 1:
+		# Toggle fullscreen sur Entrée
+		toggle_fullscreen()
+	elif selected_index == 2:
 		return_to_menu()
 
 func return_to_menu() -> void:
