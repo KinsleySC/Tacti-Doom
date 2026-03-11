@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgn174ifi4m6u"]
+
+[ext_resource type="Script" uid="uid://cnqkdh70ciyg5" path="res://player.gd" id="1_sweqy"]
+[ext_resource type="Texture2D" uid="uid://mxjulkor7ld7" path="res://muzzle_flash.png" id="2_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://c6oplry0yhfvj" path="res://survivor-shoot_rifle_0.png" id="3_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://dmkbm6xkdu32v" path="res://dead_body.png" id="4_dw050"]
+[ext_resource type="Texture2D" uid="uid://bgpwghxf02h76" path="res://blood_splatter.png" id="5_b26j0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n7ghd"]
+radius = 3.3791838
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_sweqy")
+metadata/_edit_horizontal_guides_ = [-81.0]
+
+[node name="MuzzleFlash" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0.77254903, 0.8, 0, 1)
+position = Vector2(363, 168)
+rotation = 1.5877231
+scale = Vector2(1.4584289, 1.2806966)
+texture = ExtResource("2_2hs0m")
+
+[node name="Timer" type="Timer" parent="MuzzleFlash"]
+wait_time = 0.05
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="DeathScreen" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/DeathScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 20.0
+offset_right = 18.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.19738966, 0.36983275, 0.19099718, 1)
+
+[node name="Panel" type="Panel" parent="CanvasLayer/DeathScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -51.0
+offset_right = 75.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/DeathScreen/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.5
+offset_top = 11.0
+offset_right = 47.5
+offset_bottom = 34.0
+grow_horizontal = 2
+text = "Tu es mort !"
+
+[node name="Button" type="Button" parent="CanvasLayer/DeathScreen/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = 2.75
+offset_right = 60.5
+offset_bottom = 33.75
+grow_horizontal = 2
+grow_vertical = 2
+text = "Recommencer"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Graphics" type="Node2D" parent="."]
+
+[node name="Alive" type="Sprite2D" parent="Graphics"]
+position = Vector2(199.99998, 122.00001)
+scale = Vector2(1.0590965, 0.98640716)
+texture = ExtResource("3_1jxqw")
+
+[node name="Dead" type="Sprite2D" parent="Graphics"]
+visible = false
+z_index = -1
+scale = Vector2(1.9447416, 1.6494918)
+texture = ExtResource("4_dw050")
+
+[node name="BloodSplatter" type="Sprite2D" parent="Graphics/Dead"]
+self_modulate = Color(0.46186197, 1.0588765e-06, 2.6471912e-07, 1)
+show_behind_parent = true
+position = Vector2(-2, 1)
+scale = Vector2(1.7145274, 0.9024788)
+texture = ExtResource("5_b26j0")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(177, 171)
+rotation = -1.5692708
+scale = Vector2(4.8077188, -58.67839)
+target_position = Vector2(100, -1000)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(134, 140)
+scale = Vector2(21.010992, 24.99997)
+shape = SubResource("CircleShape2D_n7ghd")
+
+[connection signal="timeout" from="MuzzleFlash/Timer" to="MuzzleFlash" method="hide"]
+[connection signal="button_up" from="CanvasLayer/DeathScreen/Panel/Button" to="." method="restart"]
